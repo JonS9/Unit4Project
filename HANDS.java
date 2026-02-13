@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 public class HANDS {
     public static int[] FindHands(String[] x) {
         int[] hands = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -46,7 +48,7 @@ public class HANDS {
         return hands;
     }
 
-    public void Five (int[] x, int[]y) {
+    public static void Five (int[] x, int[]y) {
         for (int num : x) {
             if (num == 5) {
                 y[0]++;
@@ -54,7 +56,7 @@ public class HANDS {
         }
     }
 
-    public void Four (int[] x, int[]y) {
+    public static void Four (int[] x, int[]y) {
         for (int num : x) {
             if (num == 4) {
                 y[1]++;
@@ -62,27 +64,78 @@ public class HANDS {
         }
     }
 
-    public void Full (int[] x, int[]y) {
+    public static void Full (int[] x, int[]y) {
+        boolean is3 = false;
+        boolean is2 = false;
         for (int num : x) {
-            if (num == 5) {
-                y[0]++;
+            if (num == 3) {
+                is3 = true;
             }
+            if (num == 2) {
+                is2 = true;
+            }
+        }
+        if (is3 && is2) {
+            y[2]++;
         }
     }
 
-    public void Three (int[] x, int[]y) {
+    public static void Three (int[] x, int[]y) {
+        boolean is3 = false;
+        boolean is2 = false;
         for (int num : x) {
-            if (num == 5) {
-                y[0]++;
+            if (num == 3) {
+                is3 = true;
             }
+            if (num == 2) {
+                is2 = true;
+            }
+        }
+        if (is3 && !is2) {
+            y[3]++;
         }
     }
-    public void Two (int[] x, int[]y) {
+    public static void Two (int[] x, int[]y) {
+        int count = 0;
         for (int num : x) {
-            if (num == 5) {
-                y[0]++;
+            if (num == 2) {
+                count++;
             }
         }
+        if (count == 2) {
+            y[4]++;
+        }
+    }
+
+    public static void One (int[] x, int[]y) {
+        int count = 0;
+        boolean greaterThan = false;
+        for (int num : x) {
+            if (num == 2) {
+                count++;
+            }
+            if (num >= 3) {
+                greaterThan = true;
+            }
+        }
+        if (count == 1 && !greaterThan) {
+            y[5]++;
+        }
+    }
+
+    public static void High (int[] x, int[]y) {
+        int count = 0;
+        for (int num : x) {
+            if (num == 1) {
+                count++;
+            }
+        }
+        if (count == 5) {
+            y[6]++;
+        }
+    }
+
+    public static void RankHands () {
+
     }
 }
-

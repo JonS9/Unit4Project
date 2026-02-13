@@ -18,43 +18,34 @@ public class Main {
             System.out.println("HE-HEY, BUCKO! THAT'S NOT A VALID DATA FILE!");
         }
 
+
+        int[] y = {0,0,0,0,0,0,0};
+
         String[] lines = fileData.split("\n");
-
+        int[] x = {0,0,0,0,0,0,0,0,0,0,0,0,0};
         for (String line : lines) {
-            String[] numbers = line.split("," );
-            System.out.println(Arrays.toString(numbers));
 
+            String w = line.substring(0, line.indexOf("|"));
+            String[] numbers = w.split("," );
 
-            int[] x = HANDS.FindHands(numbers);
+            x = HANDS.FindHands(numbers);
 
-
+            HANDS.Five(x, y);
+            HANDS.Four(x, y);
+            HANDS.Full(x, y);
+            HANDS.Three(x, y);
+            HANDS.Two(x, y);
+            HANDS.One(x, y);
+            HANDS.High(x, y);
         }
-            }
-        }
+        System.out.println("Number of five of a kind hands: " + y[0]);
+        System.out.println("Number of four of a kind hands: " + y[1]);
+        System.out.println("Number of full house hands:  " + y[2]);
+        System.out.println("Number of three of a kind hands: " + y[3]);
+        System.out.println("Number of two pair hands: " + y[4]);
+        System.out.println("Number of one pair hands: " + y[5]);
+        System.out.println("Number of high card hands: " + y[6]);
 
+    }
+}
 
-
-//        if (i == 4) {
-//handsType[1]++;
-//        }
-//        if (i == 3) {
-//is3 = true;
-//        }
-//        if (i == 2) {
-//is2 = true;
-//        }
-//        if (is3 && is2) {
-//handsType[2]++;
-//        } else if (is3) {
-//handsType[3]++;
-//        }
-//        if (i == 2) {
-//count++;
-//        }
-//        if (count == 2) {
-//handsType[4]++;
-//        } else if (count == 1) {
-//handsType[5]++;
-//        } else {
-//handsType[6]++;
-//        }
